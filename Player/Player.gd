@@ -80,7 +80,8 @@ func _physics_process(delta):
 		fire_bullet()
 
 	if Input.is_action_pressed("fire_missile") and fire_bullet_timer.time_left == 0:
-		fire_missile()
+		if player_stats.missiles > 0:
+			fire_missile()
 
 func fire_bullet():
 	# This is not working for some unknown reason
@@ -102,6 +103,7 @@ func fire_missile():
 	motion -= missile.velocity * .25
 	missile.rotation = missile.velocity.angle()
 	fire_bullet_timer.start()
+	player_stats.missiles -= 1
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO

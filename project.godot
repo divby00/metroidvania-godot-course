@@ -35,6 +35,10 @@ config/icon="res://icon.png"
 Utils="*res://Utils.gd"
 ResourceLoader="*res://ResourceLoader.gd"
 Events="*res://Events.gd"
+PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+UserData="*res://addons/github-integration/scripts/user_data.gd"
 
 [display]
 
@@ -44,6 +48,10 @@ window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "github-integration" )
 
 [importer_defaults]
 
@@ -120,9 +128,11 @@ fire_missile={
 2d_physics/layer_2="World"
 2d_physics/layer_3="PlayerHurtbox"
 2d_physics/layer_4="EnemyHurtbox"
+2d_physics/layer_5="Brick"
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

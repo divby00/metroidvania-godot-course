@@ -3,9 +3,12 @@ extends Resource
 class_name PlayerStats
 
 var max_health = 5
+var max_missiles = 5
 var health = max_health setget set_health
+var missiles = max_missiles setget set_missiles
 
 signal player_died
+signal player_missiles_changed(value)
 signal player_health_changed(value)
 
 func set_health(value):
@@ -16,3 +19,7 @@ func set_health(value):
 	
 	if health == 0:
 		emit_signal("player_died")
+
+func set_missiles(value):
+	missiles = clamp(value, 0, max_missiles)
+	emit_signal("player_missiles_changed", missiles)
