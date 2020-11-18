@@ -39,11 +39,15 @@ onready var gun = $Sprite/PlayerGun
 onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 onready var fire_bullet_timer = $FireBulletTimer
 onready var blink_animator = $BlinkAnimator
+onready var powerup_detector = $PowerupDetector
+onready var camera_follow = $CameraFollow
 
+signal hit_door(door)
 
 func _ready():
 	player_stats.connect("player_died", self, "_on_died")
 	main_instances.player = self
+	call_deferred("assign_world_camera")
 
 func _exit_tree():
 	main_instances.player = null
@@ -80,8 +84,20 @@ func _physics_process(delta):
 		fire_bullet()
 
 	if Input.is_action_pressed("fire_missile") and fire_bullet_timer.time_left == 0:
-		if player_stats.missiles > 0:
+		if player_stats.missiles > 0 and player_stats.missiles_unlocked:
 			fire_missile()
+
+func assign_world_camera():
+	camera_follow.remote_path = main_instances.world_camera.get_path()
+
+func save():
+	var save_dictionary = {
+		"filename": get_filename(),
+		"parent": get_parent().get_path(),
+		"position_x": position.x,
+		"position_y": position.y
+	}
+	return save_dictionary
 
 func fire_bullet():
 	# This is not working for some unknown reason
@@ -245,3 +261,7 @@ func _on_Hurtbox_hit(damage):
 
 func _on_died():
 	queue_free()
+
+func _on_PowerupDetector_area_entered(area):
+	if area is Powerup:
+		area._pickup()

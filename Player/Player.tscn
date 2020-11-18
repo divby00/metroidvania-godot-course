@@ -120,9 +120,15 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Persists",
+]]
+z_index = 1
 collision_mask = 2
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
@@ -168,6 +174,15 @@ collision_mask = 0
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, -7 )
 shape = ExtResource( 5 )
+
+[node name="PowerupDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerupDetector"]
+position = Vector2( 0, -7 )
+shape = ExtResource( 5 )
 [connection signal="hit" from="Hurtbox" to="." method="_on_Hurtbox_hit"]
+[connection signal="area_entered" from="PowerupDetector" to="." method="_on_PowerupDetector_area_entered"]
 
 [editable path="Hurtbox"]

@@ -1,11 +1,17 @@
 extends Camera2D
 
 var shake = 0
+var main_instances = ResourceLoader.main_instances
+
 onready var timer = $Timer
 
 
 func _ready():
 	Events.connect("add_screenshake", self, "_on_Events_add_screenshake")
+	main_instances.world_camera = self
+	
+func _exit_tree():
+	main_instances.world_camera = null
 	
 func _process(delta):
 	offset_h = rand_range(-shake, shake)
