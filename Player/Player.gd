@@ -43,6 +43,7 @@ onready var powerup_detector = $PowerupDetector
 onready var camera_follow = $CameraFollow
 
 signal hit_door(door)
+signal player_died
 
 func _ready():
 	player_stats.connect("player_died", self, "_on_died")
@@ -269,6 +270,7 @@ func _on_Hurtbox_hit(damage):
 		blink_animator.play("Blink")
 
 func _on_died():
+	emit_signal("player_died")
 	queue_free()
 
 func _on_PowerupDetector_area_entered(area):

@@ -10,6 +10,7 @@ func _ready():
 		SaverAndLoader.load_game()
 		SaverAndLoader.is_loading = false
 	main_instances.player.connect("hit_door", self, "_on_player_hit_door")
+	main_instances.player.connect("player_died", self, "_on_Player_player_died")
 	
 	
 func _on_player_hit_door(door):
@@ -32,3 +33,7 @@ func get_door_with_connection(not_door, connection):
 		if door.connection == connection and door != not_door:
 			return door
 	return null
+
+func _on_Player_player_died():
+	yield(get_tree().create_timer(1.0), "timeout")
+	get_tree().change_scene("res://Menus/GameOverMenu.tscn")
