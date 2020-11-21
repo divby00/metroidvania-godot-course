@@ -4,6 +4,7 @@ onready var current_level = $Level_00
 var main_instances = ResourceLoader.main_instances
 
 func _ready():
+	Music.list_play()
 	VisualServer.set_default_clear_color(Color.black)
 	if SaverAndLoader.is_loading:
 		SaverAndLoader.load_game()
@@ -31,4 +32,3 @@ func get_door_with_connection(not_door, connection):
 		if door.connection == connection and door != not_door:
 			return door
 	return null
-	

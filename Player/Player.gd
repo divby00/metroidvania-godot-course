@@ -46,10 +46,12 @@ signal hit_door(door)
 
 func _ready():
 	player_stats.connect("player_died", self, "_on_died")
+	player_stats.missiles_unlocked = SaverAndLoader.custom_data.missiles_unlocked
 	main_instances.player = self
 	call_deferred("assign_world_camera")
 
-func _exit_tree():
+func queue_free():
+	.queue_free()
 	main_instances.player = null
 
 func set_invincible(value):
@@ -100,6 +102,7 @@ func save():
 	return save_dictionary
 
 func fire_bullet():
+	SoundFx.play("Bullet", rand_range(0.8, 1.1))
 	# This is not working for some unknown reason
 	#var bullet = Utils.instance_scene_on_main(PlayerBullet, muzzle.global_position)
 	var bullet = PlayerBullet.instance()
@@ -110,7 +113,9 @@ func fire_bullet():
 	bullet.rotation = bullet.velocity.angle()
 	fire_bullet_timer.start()
 
+
 func fire_missile():
+	SoundFx.play("Explosion", rand_range(0.8, 1.1))
 	var missile = PlayerMissile.instance()
 	get_tree().current_scene.add_child(missile)
 	missile.global_position = muzzle.global_position
@@ -156,6 +161,7 @@ func jump_check():
 			double_jump = false
 
 func jump(force):
+	SoundFx.play("Jump", rand_range(0.8, 1.0), -5)
 	Utils.instance_scene_on_main(JumpEffect, global_position)
 	motion.y = -force
 	snap_vector = Vector2.ZERO
@@ -208,6 +214,7 @@ func move():
 		position.x = last_position.x
 
 func create_dust_effect():
+	SoundFx.play("Step", rand_range(.6, 1.2), -10)
 	var dust_position = global_position
 	dust_position.x += rand_range(-4, 4)
 	Utils.instance_scene_on_main(DustEffect, dust_position)
@@ -228,6 +235,7 @@ func get_wall_axis():
 	
 func wall_slide_jump_check(wall_axis):
 	if Input.is_action_just_pressed("ui_up"):
+		SoundFx.play("Jump", rand_range(0.8, 1.0), -5)
 		motion.x = wall_axis * MAX_SPEED
 		motion.y = -JUMP_FORCE / 1.25
 		state = MOVE
@@ -256,6 +264,7 @@ func wall_detach(delta, wall_axis):
 
 func _on_Hurtbox_hit(damage):
 	if not INVINCIBLE:
+		SoundFx.play("Hurt")
 		player_stats.health -= damage
 		blink_animator.play("Blink")
 

@@ -845,17 +845,17 @@ MAX_SPEED = 50
 ACCELERATION = 150
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0, -1.84298 )
+position = Vector2( 0, 0.777778 )
 texture = ExtResource( 2 )
 
 [node name="HeadSprite" type="Sprite" parent="Sprite" index="0"]
-position = Vector2( 0, -8.09251 )
+position = Vector2( 0, -7.88889 )
 texture = ExtResource( 4 )
 
 [node name="RightWingSprite" type="Sprite" parent="Sprite" index="1"]
 show_behind_parent = true
-position = Vector2( 10, -17 )
-rotation = 1.19959
+position = Vector2( 10, -18 )
+rotation = -0.785398
 texture = ExtResource( 5 )
 offset = Vector2( 21, -5 )
 flip_h = true
@@ -863,13 +863,13 @@ flip_h = true
 [node name="LeftWingSprite" type="Sprite" parent="Sprite" index="2"]
 show_behind_parent = true
 position = Vector2( -10, -18 )
-rotation = -1.19959
+rotation = 0.785398
 texture = ExtResource( 5 )
 offset = Vector2( -21, -5 )
 
 [node name="LeftUpperLegSprite" type="Sprite" parent="Sprite" index="3"]
 position = Vector2( -12, -12 )
-rotation = 0.00366624
+rotation = 0.0854839
 texture = ExtResource( 6 )
 offset = Vector2( -5, 1 )
 __meta__ = {
@@ -878,7 +878,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftUpperLegSprite" index="0"]
 position = Vector2( -12, 3 )
-rotation = 0.032499
+rotation = 0.0188117
 texture = ExtResource( 3 )
 offset = Vector2( -2, 4 )
 __meta__ = {
@@ -887,7 +887,7 @@ __meta__ = {
 
 [node name="EndSegment" type="Sprite" parent="Sprite/LeftUpperLegSprite/MiddleSegment" index="0"]
 position = Vector2( -6, 10 )
-rotation = 0.225882
+rotation = 0.157755
 texture = ExtResource( 7 )
 offset = Vector2( 1, 2 )
 __meta__ = {
@@ -902,7 +902,7 @@ __meta__ = {
 
 [node name="RightUpperLegSprite" type="Sprite" parent="Sprite" index="4"]
 position = Vector2( 12, -12 )
-rotation = -0.102836
+rotation = -0.185129
 texture = ExtResource( 6 )
 offset = Vector2( 5, 1 )
 flip_h = true
@@ -912,7 +912,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/RightUpperLegSprite" index="0"]
 position = Vector2( 11, 3 )
-rotation = 0.0900245
+rotation = 0.0939554
 texture = ExtResource( 3 )
 offset = Vector2( 3, 4 )
 flip_h = true
@@ -922,7 +922,7 @@ __meta__ = {
 
 [node name="EndSegment" type="Sprite" parent="Sprite/RightUpperLegSprite/MiddleSegment" index="0"]
 position = Vector2( 6, 10 )
-rotation = -0.371414
+rotation = -0.293052
 texture = ExtResource( 7 )
 offset = Vector2( -1, 2 )
 flip_h = true
@@ -938,7 +938,7 @@ __meta__ = {
 
 [node name="LeftLowerLegSprite" type="Sprite" parent="Sprite" index="5"]
 position = Vector2( -9, 0 )
-rotation = -0.488139
+rotation = -0.327188
 texture = ExtResource( 6 )
 offset = Vector2( -4, 1 )
 __meta__ = {
@@ -947,7 +947,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftLowerLegSprite" index="0"]
 position = Vector2( -12, 3 )
-rotation = -0.161696
+rotation = -0.188665
 texture = ExtResource( 3 )
 offset = Vector2( -2, 4 )
 __meta__ = {
@@ -956,7 +956,7 @@ __meta__ = {
 
 [node name="EndSegment" type="Sprite" parent="Sprite/LeftLowerLegSprite/MiddleSegment" index="0"]
 position = Vector2( -6, 10 )
-rotation = 0.439782
+rotation = -0.148446
 texture = ExtResource( 7 )
 offset = Vector2( 1, 2 )
 __meta__ = {
@@ -971,7 +971,7 @@ __meta__ = {
 
 [node name="RightLowerLegSprite" type="Sprite" parent="Sprite" index="6"]
 position = Vector2( 9, 0 )
-rotation = 0.488246
+rotation = 0.348191
 texture = ExtResource( 6 )
 offset = Vector2( 5, 1 )
 flip_h = true
@@ -981,7 +981,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/RightLowerLegSprite" index="0"]
 position = Vector2( 12, 3 )
-rotation = 0.162337
+rotation = 0.312502
 texture = ExtResource( 3 )
 offset = Vector2( 2, 4 )
 flip_h = true
@@ -991,7 +991,7 @@ __meta__ = {
 
 [node name="EndSegment" type="Sprite" parent="Sprite/RightLowerLegSprite/MiddleSegment" index="0"]
 position = Vector2( 6, 10 )
-rotation = -0.555284
+rotation = -0.0267801
 texture = ExtResource( 7 )
 offset = Vector2( -1, 2 )
 flip_h = true

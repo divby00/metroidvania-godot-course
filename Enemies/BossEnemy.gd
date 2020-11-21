@@ -11,7 +11,8 @@ onready var right_wall_check = $RightWallCheck
 signal died
 
 func _ready():
-	pass # Replace with function body.
+	if SaverAndLoader.custom_data.boss_defeated:
+		queue_free()
 
 func _on_Timer_timeout():
 	fire_bullet()
@@ -42,4 +43,5 @@ func fire_bullet():
 
 func _on_EnemyStats_enemy_died():
 	emit_signal("died")
+	SaverAndLoader.custom_data.boss_defeated = true
 	._on_EnemyStats_enemy_died()

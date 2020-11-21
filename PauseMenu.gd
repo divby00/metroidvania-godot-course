@@ -1,3 +1,4 @@
+
 extends ColorRect
 
 var paused = false setget set_paused
@@ -7,6 +8,7 @@ func _process(delta):
 		self.paused = !self.paused
 
 func _on_ResumeButton_pressed():
+	SoundFx.play("Click", 1, -10)
 	self.paused = false
 
 func _on_QuitButton_pressed():
@@ -16,3 +18,7 @@ func set_paused(value):
 	paused = value
 	get_tree().paused = paused
 	visible = paused
+	if paused:
+		SoundFx.play("Pause", 1, -10)
+	else:
+		SoundFx.play("Unpause", 1, -10)
